@@ -1,10 +1,11 @@
 import pandas as pd
+import numpy as np
 
-# --- User settings ---
-feature_file = 'Proj/Data/features.txt'   # your text file with one feature name per line
+#Files
+feature_file = 'Proj/Data/features2.txt'   
 input_csv = 'Proj/Data/Android Malware Analysis/Android Malware Analysis CSV Dataset/CIC-AndMal2017.csv'            # your original data file (can also be loaded as df)
-output_csv = 'selected_data.csv'        # output file name
-target_col = 'Label'                    # include this in the final dataset
+output_csv = 'selected_data.csv'        
+target_col = 'Label'                    
 
 # --- Load the feature list ---
 with open(feature_file, 'r') as f:
@@ -12,6 +13,12 @@ with open(feature_file, 'r') as f:
 
 # --- Load your data ---
 df = pd.read_csv(input_csv)
+
+#Find and remove faulty rows
+benign_label = df['Label'] == 'BENIGN'
+not_benign_fam = df['category'] != 'Benign'
+bad_label_rows = benign_label & not_benign_fam
+df = df[~bad_label_rows]
 
 # --- Filter columns ---
 # Ensure features exist in the DataFrame
@@ -23,6 +30,11 @@ if target_col in df.columns and target_col not in valid_features:
 
 # Subset the DataFrame
 filtered_df = df[valid_features]
+
+
+#Set the label to a boolean instead of name
+filtered_df['Label'] = filtered_df['Label'].map(lambda x: 1 if x == 'BENIGN' else 0)
+filtered_df = filtered_df.rename(columns={'Label': 'is_benign'})
 
 # --- Save the result ---
 filtered_df.to_csv(output_csv, index=False)
