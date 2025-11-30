@@ -22,7 +22,7 @@ Contains data as well as the methods employed as eiter Jupyter notebooks or as .
 ```
 - `Base_line` scripts for majority class base and decision stump base line
 - `Full_data` Unprocessed data as downloaded
-- `Selected_data` Folder containing preprocessing, analysis as well as finished data sets (`train.csv` and `test.csv`)
+- `Selected_data` Folder containing preprocessing, including full list of features, analysis as well as finished data sets (`train.csv` and `test.csv`)
 - `SVM` containing different tuning and evaluation scripts for SVMs
 - `Trees` tuning and evaluation notebooks for Decision trees and random forests
 - `rebalance_train_set.py` Helper function for up- and downsampling, used in a few different scripts in this repo
