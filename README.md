@@ -5,7 +5,8 @@ Contains data as well as the methods employed as eiter Jupyter notebooks or as .
 ### Repo structure:
 
 ```
-├── rebalance_train_set.py
+.
+├── Base_line
 ├── Full_data
 ├── Selected_data
 ├── SVM
@@ -15,10 +16,12 @@ Contains data as well as the methods employed as eiter Jupyter notebooks or as .
 │   │   └── results
 │   └── Ratios
 └── Trees
+
+
 ```
 
 - `rebalance_train_set.py` Helper function for up- and downsampling, used in a few different scripts in this repo
 - `Full_data` Unprocessed data as downloaded
-- `Selected_data` Folder containing preprocessing as well as finished data sets (`train.csv` and `test.csv`)
+- `Selected_data` Folder containing preprocessing, analysis as well as finished data sets (`train.csv` and `test.csv`)
 - `SVM` containing different tuning and evaluation scripts for SVMs
-- `Trees` tuning and evaluation scripts for Decision trees and random forests
+- `Trees` tuning and evaluation notebooks for Decision trees and random forests
